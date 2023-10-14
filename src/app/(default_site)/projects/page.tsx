@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Projects = () => {
   return (
-    <div>
+    <div className="w-full">
       {portfolios &&
         portfolios.map((portfolio, index) => {
           return (
@@ -15,8 +15,11 @@ const Projects = () => {
               </div>
               <div className="flex flex-wrap">
                 {portfolio.data.map((row, cIndex) => (
-                  <div key={`${index}-${cIndex}`} className="w-1/3 px-2 mb-5">
-                    <Link href={`/projects/${row.id}`}>
+                  <div
+                    key={`${index}-${cIndex}`}
+                    className="w-1/2 lg:w-1/3 px-2 mb-5"
+                  >
+                    <Link href={`/projects/${row.slug}`}>
                       <div className="relative w-full h-[200px] bg-slate-200 rounded-lg mb-2 hover:cursor-pointer">
                         <Image
                           src={row.images[0]}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface IParams {
-  id: number;
+  slug: string;
 }
 
 interface IProject {
@@ -14,10 +14,10 @@ interface IProject {
   images: string[];
 }
 
-const findProject = (id: number) => {
+const findProject = (slug: string) => {
   const res: IProject[] = [];
   portfolios.map((portfolio) => {
-    const project = portfolio.data.find((item) => item.id == id);
+    const project = portfolio.data.find((item) => item.slug == slug);
     if (project) {
       res.push(project);
     }
@@ -26,8 +26,8 @@ const findProject = (id: number) => {
 };
 
 const Detail = ({ params }: { params: IParams }) => {
-  const { id } = params;
-  const data = findProject(id)[0];
+  const { slug } = params;
+  const data = findProject(slug)[0];
 
   return (
     <div className="py-5">
